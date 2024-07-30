@@ -32,13 +32,11 @@ jobs:
         run: |
           # Use the PR number as the environment name
           env=$(echo ${{ github.ref_name }} | sed 's|^\([0-9]*\)/.*|pr-\1|')
-
-          echo "Source is ${{ github.head_ref }}"
+          source=$(echo ${{ github.head_ref }} | sed 's|^\([0-9]*\)/.*|pr-\1|')
+          echo "Source is $source"
 
           # Ensure environment name is 11 characters or less and has no special characters    
           env="${env:0:11}"
           env=$(echo "$env" | sed 's/[^a-zA-Z0-9]/-/g')
-
-          echo "Deleting environment $env"
-        
+       
           terminus env:delete ${{ vars.SITE_NAME }}.$env --delete-branch --yes
