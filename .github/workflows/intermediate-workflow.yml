@@ -106,7 +106,7 @@ jobs:
         run: |
           # Create multidev environment if it doesn't exist
           if ! terminus env:list ${{ vars.SITE_NAME }} --field=ID | grep $env; then
-            terminus env:create ${{ vars.SITE_NAME }}.live $env
+            terminus env:create ${{ vars.SITE_NAME }}.dev $env
           fi
 
           # Ensure environment is in git mode
