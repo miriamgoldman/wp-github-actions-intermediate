@@ -23,9 +23,6 @@ jobs:
     needs: [ configure_env ]
     if: github.event_name == 'pull_request'
     steps:
-      - uses: 8BitJonny/gh-get-current-pr@3.0.0
-        id: PR
-        
       - name: Install Terminus
         uses: pantheon-systems/terminus-github-actions@v1
         with:
@@ -35,8 +32,9 @@ jobs:
         run: |
           # Use the PR number as the environment name
           env=$(echo ${{ github.ref_name }} | sed 's|^\([0-9]*\)/.*|pr-\1|')
-          prnum=$(echo ${{ steps.PR.outputs.number }}
-          echo "Source is $prnum"
+          prnum="${{ github.event.pull_request.number }}"
+
+          echo "The PR num is $prnum"
 
           # Ensure environment name is 11 characters or less and has no special characters    
           env="${env:0:11}"
