@@ -32,8 +32,8 @@ jobs:
         run: |
           # Use the PR number as the environment name
           env=$(echo ${{ github.ref_name }} | sed 's|^\([0-9]*\)/.*|pr-\1|')
-
-          echo "Source is ${{ github.head_ref }} | sed 's|^\([0-9]*\)/.*|pr-\1|')"
+          source=$(echo ${{ github.head_ref }} | sed 's|^\([0-9]*\)/.*|pr-\1|')
+          echo "Source is $source"
 
           # Ensure environment name is 11 characters or less and has no special characters    
           env="${env:0:11}"
