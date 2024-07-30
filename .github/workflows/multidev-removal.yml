@@ -31,13 +31,5 @@ jobs:
       - name: Determine target environment and maybe delete it
         run: |
           # Use the PR number as the environment name
-          env=$(echo ${{ github.ref_name }} | sed 's|^\([0-9]*\)/.*|pr-\1|')
-          prnum="${{ github.event.pull_request.number }}"
-
-          echo "The PR num is $prnum"
-
-          # Ensure environment name is 11 characters or less and has no special characters    
-          env="${env:0:11}"
-          env=$(echo "$env" | sed 's/[^a-zA-Z0-9]/-/g')
-       
-          terminus env:delete ${{ vars.SITE_NAME }}.$env --delete-branch --yes
+          prnum="pr-${{ github.event.pull_request.number }}"              
+          terminus env:delete ${{ vars.SITE_NAME }}.$prnum --delete-branch --yes
