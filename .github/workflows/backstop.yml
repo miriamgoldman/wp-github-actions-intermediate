@@ -20,16 +20,17 @@ jobs:
       - name: Install Backstop
         run:  npm install --force -g backstopjs
  
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
     
   run_backstopjs:
     name: Run BackstopJS
     runs-on: ubuntu-latest
     needs: [ install_node ]
     steps:
+     - name: Checkout Code
+       uses: actions/checkout@v4
+       with:
+        fetch-depth: 0
+
      - name: Create reference screenshot(s)
        working-directory: backstop
        run:  backstop reference
