@@ -18,7 +18,10 @@ jobs:
           node-version: 20.9
 
       - name: Install Backstop
-        run:  npm install backstopjs
+        run:  npm install --force -g backstopjs
+
+      - name: Create reference screenshot from source site
+        run: backstop reference
 
       - name: Run Backstop
         run: backstop test
