@@ -1,0 +1,48 @@
+name: VRT with Backstop JS
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+    branches: 
+      - main
+
+jobs:
+  run_backstop:
+    name: Setup BackstopJS 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.9
+
+      - name: Install Backstop
+        run:  npm install --force -g backstopjs
+
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+         fetch-depth: 0
+
+      - name: Create reference screenshot(s)
+        working-directory: backstop
+        run:  backstop reference
+
+      - name: Run Backstop
+        working-directory: backstop
+        run:  backstop test
+
+    
+      - name: Archive HTML Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: report
+          path: backstop/backstop_data
+
+
+
+
+
+
+
