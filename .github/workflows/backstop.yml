@@ -9,7 +9,7 @@ on:
 
 jobs:
   install_node:
-    name: Run BackstopJS
+    name: Setup BackstopJS 
     runs-on: ubuntu-latest
     steps:
       - name: Install Node 20
@@ -17,22 +17,43 @@ jobs:
         with:
           node-version: 20.9
 
-      - name: Checkout
+      - name: Install Backstop
+        run:  npm install --force -g backstopjs
+ 
+      - name: Checkout Code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+    
+  run_backstopjs:
+    name: Run BackstopJS
+    runs-on: ubuntu-latest
+    needs: [ install_node ]
+    steps:
+     - name: Create reference screenshot(s)
+       working-directory: backstop
+       run:  backstop reference
 
-      - name: Install Backstop
-        run:  npm install --force -g backstopjs
+     - name: Run Backstop
+       working-directory: backstop
+       run:  backstop test
 
-      - name: Create reference screenshot(s)
-        working-directory: backstop
-        run:  backstop reference
+     - name: create a folder
+       run: mkdir backstop_data
+    
+     - name: Archive HTML Report on failure
+       uses: actions/upload-artifact@v1
+       with:
+         name: report
+         path: backstop_data/
 
-      - name: Run Backstop
-        working-directory: backstop
-        run:  backstop test
-
+     - name: Download a Build Artifact
+       uses: actions/download-artifact@v2.0.10
+       with:
+        # Artifact name
+        name: Download report
+        # Destination path
+        path: backstop_data
 
 
 
