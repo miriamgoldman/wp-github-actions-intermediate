@@ -13,12 +13,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Node 20
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: 20.9
 
       - name: Install Backstop
         run:  npm install --force -g backstopjs
+
+      - name: DEBUG - list directory
+        run: ls
 
     #   - name: Create reference screenshot from source site
     #     run: backstop reference
