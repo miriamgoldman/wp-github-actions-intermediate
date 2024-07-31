@@ -33,14 +33,12 @@ jobs:
         working-directory: backstop
         run:  backstop test
 
-      - name: create a folder
-        run: mkdir backstop_data
     
       - name: Archive HTML Report
         uses: actions/upload-artifact@v4
         with:
           name: report
-          path: backstop_data
+          path: backstop/backstop_data
 
       - name: Download a Build Artifact
         uses: actions/download-artifact@v4
@@ -48,7 +46,7 @@ jobs:
          # Artifact name
          name: Download report
          # Destination path
-         path: backstop_data
+         path: backstop/backstop_data
 
 
 
