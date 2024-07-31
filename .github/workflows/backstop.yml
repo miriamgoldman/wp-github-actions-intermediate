@@ -37,16 +37,11 @@ jobs:
         run: mkdir backstop_data
     
       - name: Archive HTML Report on failure
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
          name: report
          path: backstop_data/
 
-      - name: Download a Build Artifact
-        uses: actions/download-artifact@v2.0.10
-        with:
-         name: Download report
-         path: backstop_data
 
 
 
