@@ -1,0 +1,22 @@
+name: VRT with Backstop JS
+on:
+  pull_request:
+    branches: 
+      - main
+
+jobs:
+  install_node:
+    name: Run BackstopJS
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Node 20
+        uses: actions/setup-node@v1
+        with:
+          node-version: 20.9
+
+      - name: Install Backstop
+        run:  npm install backstopjs
+
+
+
+
