@@ -21,11 +21,11 @@ jobs:
         run:  npm install --force -g backstopjs
 
 
-      - name: Create reference screenshot from source site
-        run: backstop reference
+      - name: Create reference screenshot(s)
+        run: ./node_modules/.bin/backstop reference
 
       - name: Run Backstop
-        run: backstop test
+        run: ./node_modules/.bin/backstop test
 
 
 
