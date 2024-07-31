@@ -40,13 +40,13 @@ jobs:
           name: report
           path: backstop/backstop_data
 
-      - name: Download a Build Artifact
-        uses: actions/download-artifact@v4
-        with:
-         # Artifact name
-         name: Download report
-         # Destination path
-         path: backstop/backstop_data
+    #   - name: Download a Build Artifact
+    #     uses: actions/download-artifact@v4
+    #     with:
+    #      # Artifact name
+    #      name: Download report
+    #      # Destination path
+    #      path: backstop/backstop_data
 
 
 
