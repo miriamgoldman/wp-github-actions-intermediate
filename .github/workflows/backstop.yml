@@ -17,6 +17,11 @@ jobs:
         with:
           node-version: 20.9
 
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Install Backstop
         run:  npm install --force -g backstopjs
 
