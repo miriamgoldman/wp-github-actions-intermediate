@@ -7,6 +7,10 @@ on:
     branches: 
       - main
 
+defaults:
+ run:
+  working-directory: ./
+
 jobs:
   install_node:
     name: Run BackstopJS
@@ -19,7 +23,6 @@ jobs:
 
       - name: Install Backstop
         run:  npm install --force -g backstopjs
-
 
       - name: Create reference screenshot(s)
         run: ./node_modules/.bin/backstop reference
