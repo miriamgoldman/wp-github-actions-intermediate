@@ -20,11 +20,9 @@ jobs:
       - name: Install Backstop
         run:  npm install --force -g backstopjs
 
-      - name: DEBUG - list directory
-        run: ls
 
-    #   - name: Create reference screenshot from source site
-    #     run: backstop reference
+      - name: Create reference screenshot from source site
+        run: backstop reference
 
       - name: Run Backstop
         run: backstop test
