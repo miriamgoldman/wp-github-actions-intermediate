@@ -21,11 +21,11 @@ jobs:
         run:  npm install --force -g backstopjs
 
       - name: Create reference screenshot(s)
-        working-directory: ../
+        working-directory: backstop
         run:  backstop reference
 
       - name: Run Backstop
-        working-directory: ../
+        working-directory: backstop
         run:  backstop test
 
 
