@@ -1,6 +1,9 @@
 name: VRT with Backstop JS
 on:
   pull_request:
+    types:
+      - opened
+      - synchronize
     branches: 
       - main
 
@@ -16,6 +19,10 @@ jobs:
 
       - name: Install Backstop
         run:  npm install backstopjs
+
+      - name: Run Backstop
+        run: backstop test
+
 
 
 
