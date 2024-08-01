@@ -10,6 +10,8 @@ namespace QSAlert;
 
 $qs_alert = new MultidevPolicyAlert();
 $qs_alert->sendMail();
+$mailtest = mail('miriamgoldman@pantheon.io', 'Testing Raw Email', 'This is a test of emailing from Quicksilver....');
+echo $mailtest;
 
 class MultidevPolicyAlert
 {
