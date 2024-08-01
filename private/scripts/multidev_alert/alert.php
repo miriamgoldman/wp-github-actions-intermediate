@@ -10,8 +10,6 @@ namespace QSAlert;
 
 $qs_alert = new MultidevPolicyAlert();
 $qs_alert->sendMail();
-$mailtest = mail('miriamgoldman@pantheon.io', 'Testing Raw Email', 'This is a test of emailing from Quicksilver....');
-echo $mailtest;
 
 class MultidevPolicyAlert
 {
@@ -90,14 +88,13 @@ class MultidevPolicyAlert
             'X-Mailer' => 'PHP/' . phpversion(),
             'Content-Type' => 'text/html; charset=UTF-8'
         ];
-        $email   = 'miriamgoldman@pantheon.io';
+        $email   = 'sensei.miriam@gmail.com';
         $subject = "Code sync on $this->site_env Completed";
-        $message = "Code sync on  $this->site_env has been created for the site $this->site_name with the SiteID $this->site_id";
+        $message = "Code sync on $this->site_env has been created for the site $this->site_name with the SiteID $this->site_id";
 
         $sendMail = mail($email, $subject, $message, $headers);
         
-        echo( 'Message: ' . $message . PHP_EOL );
-        
+      
         if ($sendMail) {
             echo( 'Email Sent Successfully' . PHP_EOL) ;
         } else {
