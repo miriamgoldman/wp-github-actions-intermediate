@@ -9,7 +9,6 @@
 namespace QSAlert;
 
 $qs_alert = new MultidevPolicyAlert();
-$qs_alert->checkMail();
 $qs_alert->sendMail();
 
 class MultidevPolicyAlert
@@ -79,15 +78,6 @@ class MultidevPolicyAlert
         die('No Pantheon Quicksilver environment detected.');
     }
 
-    public function checkMail()
-    {
-        if (function_exists('mail')) {
-            echo( 'mail() is available' . PHP_EOL );
-        } else {
-            echo( 'mail() has been disabled' . PHP_EOL );
-        }
-    }
-
     public function sendMail()
     {
         echo( 'Site ID ' . $this->site_id . PHP_EOL );
@@ -106,8 +96,7 @@ class MultidevPolicyAlert
         } else {
             echo( 'Mail Failed' );
         }
-        echo( '$_ENV array output:' . PHP_EOL );
-        var_dump($_ENV);
+
     }
 
     /**
