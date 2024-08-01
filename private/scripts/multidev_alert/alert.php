@@ -85,11 +85,16 @@ class MultidevPolicyAlert
         echo( 'Site ID ' . $this->site_id . PHP_EOL );
         echo( 'Environment Name ' .$this->site_env . PHP_EOL );
         echo( 'Site Name ' .$this->site_name . PHP_EOL );
+        $headers = [
+            'From' => 'WordPress <wordpress@' . $this->site_env . '-miriam-workflows-2.pantheonsite.io>',
+            'X-Mailer' => 'PHP/' . phpversion(),
+            'Content-Type' => 'text/html; charset=UTF-8'
+        ];
         $email   = 'miriamgoldman@pantheon.io';
         $subject = "Code sync on $this->site_env Completed";
         $message = "Code sync on  $this->site_env has been created for the site $this->site_name with the SiteID $this->site_id";
 
-        $sendMail = mail($email, $subject, $message);
+        $sendMail = mail($email, $subject, $message, $headers);
         
         echo( 'Message: ' . $message . PHP_EOL );
         
