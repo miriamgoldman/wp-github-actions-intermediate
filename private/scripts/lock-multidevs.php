@@ -3,6 +3,10 @@
 
 var_dump( $_ENV );
 
+$pantheon_site = '';
+$pantheon_env  = '';
+
+
 if ( defined( 'PANTHEON_ENVIRONMENT' ) && isset( $_POST['environment'] ) ) {
 
     $data = json_encode(
