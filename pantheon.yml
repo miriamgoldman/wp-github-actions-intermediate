@@ -3,7 +3,7 @@
 api_version: 1
 
 workflows:
-  sync_code:
+  create_cloud_environment:
     after:
       - type: webphp
         description: Lock Multidevs on Creation
