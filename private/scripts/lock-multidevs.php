@@ -1,21 +1,19 @@
 <?php
 // Auto-lock new environments.
 
-var_dump( $_ENV );
-
-$pantheon_site = '';
-$pantheon_env  = '';
+$pantheon_site = $_ENV['PANTHEON_SITE_NAME'];
+$pantheon_env  = $_ENV['PANTHEON_ENVIRONMENT'];
 
 
-if ( defined( 'PANTHEON_ENVIRONMENT' ) && isset( $_POST['environment'] ) ) {
+if ( isset( $pantheon_env ) && isset( $_POST['environment'] ) ) {
 
     $data = json_encode(
       [
         'type' => 'lock_environment',  // Workflow type.
-        'environment' => PANTHEON_ENVIRONMENT,
+        'environment' => $pantheon_env,
         'params' => [
-          "username" => PANTHEON_SITE_NAME,
-          "password" => PANTHEON_SITE_NAME . '-' . PANTHEON_ENVIRONMENT,
+          "username" => $pantheon_site,
+          "password" => $pantheon_site . '-' . $pantheon_env,
         ]
       ]
     );
