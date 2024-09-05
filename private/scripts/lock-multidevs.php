@@ -1,8 +1,8 @@
 <?php
-// Auto-lock new environments.
+// Auto-lock new environments. Uses the site name, and site name + environment name as the username/password combo.
 
-$pantheon_site = $_ENV['PANTHEON_SITE_NAME'];
-$pantheon_env  = $_ENV['PANTHEON_ENVIRONMENT'];
+$pantheon_site = $_ENV['PANTHEON_SITE_NAME']; // The friendly name of your site, ie: veeva-eu
+$pantheon_env  = $_ENV['PANTHEON_ENVIRONMENT']; // The environment (dev/test/live/multidev name)
 
 
 if ( isset( $pantheon_env ) && isset( $_POST['environment'] ) ) {
