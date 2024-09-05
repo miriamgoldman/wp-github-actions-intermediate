@@ -1,6 +1,8 @@
 <?php
 // Auto-lock new environments.
 
+var_dump( $_ENV );
+
 if ( defined( 'PANTHEON_ENVIRONMENT' ) && isset( $_POST['environment'] ) ) {
 
     $data = json_encode(
